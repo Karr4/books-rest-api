@@ -7,8 +7,7 @@ import {
   userPasswordSchema,
   userRoleUpdateSchema,
 } from '../../models/User.js';
-import authenticate from '../../middlewares/authenticate.js';
-import isEmptyBody from '../../middlewares/isEmptyBody.js';
+import { isEmptyBody, authenticate } from '../../middlewares/index.js';
 
 const authRouter = express.Router();
 

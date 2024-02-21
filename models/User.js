@@ -31,6 +31,15 @@ const userSchema = new Schema(
       enum: roles,
       default: 'client',
     },
+    favorites: [
+      {
+        _id: String,
+        title: String,
+        releaseDate: String,
+        genres: [String],
+        authors: [String],
+      },
+    ],
   },
   { versionKey: false, timestamps: true }
 );

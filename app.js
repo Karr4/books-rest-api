@@ -6,7 +6,7 @@ import 'dotenv/config';
 // import swaggerDocument from './swagger.json' assert { type: 'json' };
 
 import authRouter from './routes/api/auth.js';
-// import recordsRouter from './routes/api/records.js';
+import booksRouter from './routes/api/books.js';
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', authRouter);
-// app.use('/api/records', recordsRouter);
+app.use('/api/books', booksRouter);
 // app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
