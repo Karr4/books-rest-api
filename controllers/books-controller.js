@@ -16,40 +16,43 @@ const getBookById = async (req, res, next) => {
     throw HttpError(404, 'Not found');
   }
 
+  console.log(result);
+
   res.json(result);
 };
 
 const getFavoriteBooks = async (req, res, next) => {
-  const { _id } = req.user;
+  const { _id, favorites } = req.user;
+  console.log(req.user);
 
-  const result = User.findOne({ _id });
+  // const result = await User.findOne({ _id });
 
-  if (!result) {
-    throw HttpError(404, 'Not found');
-  }
+  // if (!result) {
+  //   throw HttpError(404, 'Not found');
+  // }
 
-  res.json({ favorites: result.favorites });
+  res.json({ favorites });
 };
 
 const addBookToFavorites = async (req, res, next) => {
-  const { _id, favorites } = req.user;
+  const { _id } = req.user;
   const { bookId } = req.body;
 
-  const newFavorite = Book.findOne({ _id: bookId });
+  const newFavorite = await Book.findOne({ _id: bookId });
   if (!newFavorite) {
     throw HttpError(404, 'Not found');
   }
 
-  const result = User.findOneAndUpdate(
+  const result = await User.findOneAndUpdate(
     { _id },
-    { favorites: [...favorites, newFavorite] }
+    { $push: { favorites: newFavorite } }
   );
 
   if (!result) {
     throw HttpError(404, 'Not found');
   }
 
-  res.status(201).json({ favorites: 'result.favorites' });
+  res.status(201).json({ favorites: [...result.favorites, newFavorite] });
 };
 
 const addBook = async (req, res, next) => {
