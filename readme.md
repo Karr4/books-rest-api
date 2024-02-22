@@ -5,7 +5,7 @@
 Install dependancies
 
 ```bash
-$ npm install axios
+$ npm i
 ```
 
 Run 'npm run start' to start project in production mode
