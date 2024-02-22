@@ -17,7 +17,7 @@ $ npm run start
 Run 'npm run start:dev' to start project in development mode
 
 ```bash
-$ npm run start
+$ npm run start:dev
 ```
 
 #### Endpoints
