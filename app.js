@@ -2,8 +2,8 @@ import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
 import 'dotenv/config';
-// import swaggerUi from 'swagger-ui-express';
-// import swaggerDocument from './swagger.json' assert { type: 'json' };
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' assert { type: 'json' };
 
 import authRouter from './routes/api/auth.js';
 import booksRouter from './routes/api/books.js';
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use('/api/users', authRouter);
 app.use('/api/books', booksRouter);
-// app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });

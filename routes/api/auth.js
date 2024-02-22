@@ -2,7 +2,8 @@ import express from 'express';
 import authController from '../../controllers/auth-controller.js';
 import { validateBody } from '../../decorators/index.js';
 import {
-  userAuthSchema,
+  userSignupSchema,
+  userLoginSchema,
   userEmailSchema,
   userPasswordSchema,
   userRoleUpdateSchema,
@@ -11,18 +12,19 @@ import { isEmptyBody, authenticate } from '../../middlewares/index.js';
 
 const authRouter = express.Router();
 
-const userAuthValidate = validateBody(userAuthSchema);
+const userSignupValidate = validateBody(userSignupSchema);
+const userLoginValidate = validateBody(userLoginSchema);
 const userPasswordValidate = validateBody(userPasswordSchema);
 const userRoleUpdateValidate = validateBody(userRoleUpdateSchema);
 
 authRouter.post(
   '/signup',
   isEmptyBody,
-  userAuthValidate,
+  userSignupValidate,
   authController.signup
 );
 
-authRouter.post('/login', isEmptyBody, userAuthValidate, authController.login);
+authRouter.post('/login', isEmptyBody, userLoginValidate, authController.login);
 
 authRouter.post('/logout', authenticate, authController.logout);
 
@@ -33,7 +35,7 @@ authRouter.delete(
   authController.deleteAccount
 );
 
-authRouter.get('/current', authenticate, authController.refreshUser);
+authRouter.get('/current', authenticate, authController.currentUser);
 
 authRouter.get('/verify/:verificationToken', authController.verify);
 

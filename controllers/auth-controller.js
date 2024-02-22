@@ -53,7 +53,7 @@ const login = async (req, res) => {
   }
 
   if (!user.verified) {
-    throw HttpError(403, 'Email not verified');
+    throw HttpError(403, 'Forbidden request due to not verified email');
   }
 
   const comparedPassword = await bcrypt.compare(password, user.password);
@@ -70,6 +70,7 @@ const login = async (req, res) => {
     user: {
       email: loggedUser.email,
       role: loggedUser.role,
+      favorites: loggedUser.favorites,
     },
   });
 };
@@ -81,7 +82,7 @@ const logout = async (req, res) => {
   res.status(204).json();
 };
 
-const refreshUser = async (req, res) => {
+const currentUser = async (req, res) => {
   const { email } = req.user;
   const user = await User.findOne({ email });
 
@@ -89,6 +90,7 @@ const refreshUser = async (req, res) => {
     user: {
       email: user.email,
       role: user.role,
+      favorites: user.favorites,
     },
   });
 };
@@ -142,7 +144,7 @@ const roleUpdate = async (req, res) => {
 export default {
   signup: ctrlWrapper(signup),
   login: ctrlWrapper(login),
-  refreshUser: ctrlWrapper(refreshUser),
+  currentUser: ctrlWrapper(currentUser),
   logout: ctrlWrapper(logout),
   deleteAccount: ctrlWrapper(deleteAccount),
   verify: ctrlWrapper(verify),

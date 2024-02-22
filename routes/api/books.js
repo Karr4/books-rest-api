@@ -30,6 +30,13 @@ booksRouter.post(
   booksController.addBookToFavorites
 );
 
+booksRouter.delete(
+  '/favorite',
+  authenticate,
+  isEmptyBody,
+  booksController.removeBookFromFavorites
+);
+
 booksRouter.post(
   '/',
   authenticate,

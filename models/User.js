@@ -46,10 +46,15 @@ const userSchema = new Schema(
 
 const User = model('user', userSchema);
 
-const userAuthSchema = Joi.object({
+const userSignupSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required(),
   password: Joi.string().pattern(passwordRegex).required(),
   role: Joi.string().valid(...roles),
+});
+
+const userLoginSchema = Joi.object({
+  email: Joi.string().pattern(emailRegex).required(),
+  password: Joi.string().pattern(passwordRegex).required(),
 });
 
 const userEmailSchema = Joi.object({
@@ -69,7 +74,8 @@ const userRoleUpdateSchema = Joi.object({
 
 export {
   User,
-  userAuthSchema,
+  userSignupSchema,
+  userLoginSchema,
   userEmailSchema,
   userPasswordSchema,
   userRoleUpdateSchema,
