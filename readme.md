@@ -23,4 +23,4 @@ $ npm run start:dev
 #### Endpoints
 
 <details>
- <summary><code>DOCS</code> <code><b>/docs</b></code> <code>(after starting the project you can see documentation by going to this endpoint)</code></summary>
+ <summary><code>DOCS</code> <code><b>/api/docs</b></code> <code>(after starting the project you can see documentation by going to this endpoint)</code></summary>
