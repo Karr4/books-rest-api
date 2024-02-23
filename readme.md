@@ -1,12 +1,11 @@
 ## Books Rest Api
 
-### How to start the project
+### Tech Stack
 
-Install dependancies
-
-```bash
-$ npm i
-```
+- Node.js
+- Express.js
+- JWT Token
+- MongoDB
 
 Run 'npm run start' to start project in production mode
 
