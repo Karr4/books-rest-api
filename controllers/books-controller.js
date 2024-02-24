@@ -16,8 +16,6 @@ const getBookById = async (req, res, next) => {
     throw HttpError(404, 'Not found');
   }
 
-  console.log(result);
-
   res.json(result);
 };
 
