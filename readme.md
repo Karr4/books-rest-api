@@ -22,3 +22,5 @@ $ npm run start:dev
 
 <details>
  <summary><code>DOCS</code> <code><b>/api/docs</b></code> <code>(after starting the project you can see documentation by going to this endpoint)</code></summary>
+
+### Корчаковський АІ-215
