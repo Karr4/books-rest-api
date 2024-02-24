@@ -4,7 +4,6 @@
 
 - Node.js
 - Express.js
-- JWT Token
 - MongoDB
 
 Run 'npm run start' to start project in production mode
